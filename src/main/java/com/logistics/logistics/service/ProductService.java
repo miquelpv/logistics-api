@@ -27,6 +27,11 @@ public class ProductService {
 	}
 
 	public Product createProduct(Product product) {
+
+		if (product.getId() != null) {
+			throw new IllegalArgumentException("A new product cannot have an id");
+		}
+
 		return repository.save(product);
 	}
 

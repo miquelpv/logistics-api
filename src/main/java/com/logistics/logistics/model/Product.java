@@ -13,15 +13,22 @@ public class Product {
 	private String name;
 	private Double price;
 
+	@ManyToOne
+	ProductCategory category;
+
 	public Product() {
 	}
 
 	// Getters Setters --------------------
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}

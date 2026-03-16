@@ -46,9 +46,17 @@ public class ProductController {
 	}
 
 	@PostMapping
-	public Product createProduct(@RequestBody Product product) {
+	public ResponseEntity<Product> createProduct(@RequestBody Product product) {
 
-		return service.createProduct(product);
+		try {
+
+			Product createdProduct = service.createProduct(product);
+			return ResponseEntity.ok(createdProduct);
+
+		} catch (IllegalArgumentException e) {
+			return ResponseEntity.badRequest().build();
+		}
+
 	}
 
 	@DeleteMapping("/{id}")
